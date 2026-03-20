@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulso — Financia tu procedimiento estético</title>
+  <meta name="description" content="Financia tu procedimiento estético en minutos. Sin banco. Sin complicaciones. 100% digital. Panamá." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #1E1B4B;
+      --navy-dark:  #0D0B2B;
+      --navy-mid:   #2D2A6E;
+      --blue:       #5B4FDB;
+      --blue-light: #7C74E8;
+      --white:      #FFFFFF;
+      --bg-light:   #F7F9FC;
+      --bg-alt:     #EEEDF8;
+      --text:       #1A1A2E;
+      --text-muted: #6B7280;
+      --border:     #E5E4F0;
+      --success:    #25D366;
+      --radius-card: 16px;
+      --radius-btn:  50px;
+      --radius-icon: 12px;
+      --shadow-card: 0 4px 24px rgba(30,27,75,0.08);
+      --shadow-hover: 0 8px 40px rgba(30,27,75,0.16);
+      --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== UTILITIES ===== */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--navy);
+    }
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .btn-primary:hover {
+      background: #1E1B4B;
+      border-color: #1E1B4B;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(30,27,75,0.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+    .btn-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--white);
+    }
+    .btn-white:hover {
+      background: #EEEDF8;
+      transform: translateY(-1px);
+    }
+    .btn-ghost-white {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .btn-ghost-white:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+    .btn-wa {
+      background: var(--success);
+      color: var(--white);
+      border-color: var(--success);
+    }
+    .btn-wa:hover {
+      background: #1da851;
+      border-color: #1da851;
+      transform: translateY(-1px);
+    }
+
+    /* ===== FADE-IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+    .fade-in-delay-6 { transition-delay: 0.6s; }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+    }
+    #nav.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 24px rgba(30,27,75,0.10);
+      padding: 10px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    #nav.scrolled .nav-links a { color: var(--text); }
+    .nav-links a:hover { color: var(--blue-light); }
+    #nav.scrolled .nav-links a:hover { color: var(--navy); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .nav-icon-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-icon-link:hover { color: #fff; background: rgba(255,255,255,0.12); }
+    #nav.scrolled .nav-icon-link { color: var(--text-muted); }
+    #nav.scrolled .nav-icon-link:hover { color: var(--navy); background: var(--bg-alt); }
+    .btn-portal {
+      font-size: 14px; font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      padding: 8px 16px;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-portal:hover { color: #fff; border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); }
+    #nav.scrolled .btn-portal { color: var(--navy); border-color: var(--border); }
+    #nav.scrolled .btn-portal:hover { background: var(--bg-alt); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    #nav.scrolled .hamburger span { background: var(--navy); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--navy-dark);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--blue-light); }
+    .mobile-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(145deg, var(--navy-dark) 0%, var(--navy-mid) 50%, #1E1B4B 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 80px;
+    }
+    /* Animated gradient orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: var(--blue);
+      top: -100px; right: -100px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: #5B4FDB;
+      bottom: -80px; left: -80px;
+      animation-delay: 3s;
+    }
+    .orb-3 {
+      width: 300px; height: 300px;
+      background: #7C74E8;
+      top: 40%; left: 40%;
+      animation-delay: 5s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(20px, -30px) scale(1.05); }
+      66% { transform: translate(-15px, 20px) scale(0.95); }
+    }
+    /* Floating cards visual */
+    .hero-cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 480px;
+      z-index: 2;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      animation: card-float 6s ease-in-out infinite;
+    }
+    .hero-card:nth-child(2) { animation-delay: 1.5s; }
+    .hero-card:nth-child(3) { animation-delay: 3s; }
+    @keyframes card-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .hero-card-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.9);
+      flex-shrink: 0;
+    }
+    .hero-card-text { color: white; }
+    .hero-card-text strong { display: block; font-size: 15px; font-weight: 600; }
+    .hero-card-text span { font-size: 13px; opacity: 0.7; }
+    #hero .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(91,79,219,0.15);
+      border: 1px solid rgba(91,79,219,0.3);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue-light);
+      margin-bottom: 24px;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--white);
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero-title .accent { color: var(--blue-light); }
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 19px);
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+      padding-top: 32px;
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+    }
+    .hero-trust-item svg { flex-shrink: 0; }
+
+    /* ===== STATS BAR ===== */
+    #stats {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 20px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: -1px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ===== BENEFITS ===== */
+    #benefits {
+      padding: 96px 0;
+      background: var(--bg-light);
+    }
+    .benefits-header { text-align: center; margin-bottom: 56px; }
+    .benefits-header .section-subtitle { margin: 0 auto; margin-top: 12px; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .benefit-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      border: 1px solid var(--border);
+    }
+    .benefit-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+    .benefit-icon {
+      width: 52px; height: 52px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-icon);
+      display: flex; align-items: center; justify-content: center;
+      color: #5B4FDB;
+      margin-bottom: 20px;
+    }
+    .benefit-icon svg, .procedure-icon svg, .hero-card-icon svg, .clinic-benefit-icon svg { display: block; }
+    .procedure-icon svg { width: 32px; height: 32px; }
+    .benefit-icon svg, .clinic-benefit-icon svg { width: 26px; height: 26px; }
+    .hero-card-icon svg { width: 22px; height: 22px; }
+    .benefit-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .benefit-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    #how {
+      padding: 96px 0;
+      background: var(--white);
+    }
+    .how-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .how-steps { display: flex; flex-direction: column; gap: 0; }
+    .how-step {
+      display: flex;
+      gap: 20px;
+      padding-bottom: 36px;
+      position: relative;
+    }
+    .how-step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 48px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--navy), rgba(30,27,75,0.1));
+    }
+    .step-num {
+      width: 40px; height: 40px;
+      background: var(--navy);
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body { padding-top: 6px; }
+    .step-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .step-tag {
+      display: inline-block;
+      background: var(--bg-alt);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-top: 8px;
+    }
+    /* Visual panel for "How it works" */
+    .how-visual {
+      background: linear-gradient(145deg, var(--navy-dark), var(--navy));
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .how-visual-orb {
+      position: absolute;
+      width: 300px; height: 300px;
+      background: var(--blue);
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
+      top: -60px; right: -60px;
+    }
+    .phone-mockup {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .phone-status { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .phone-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+    .phone-status span { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .phone-app-title { font-size: 20px; font-weight: 700; color: white; margin-bottom: 4px; }
+    .phone-app-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+    .progress-bar-wrap { margin-bottom: 8px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+    .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--blue-light); border-radius: 3px; }
+    .phone-fields { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .phone-field {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+    .phone-field.filled { color: rgba(255,255,255,0.85); border-color: rgba(91,79,219,0.3); }
+    .phone-submit {
+      margin-top: 16px;
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /* ===== PROCEDURES ===== */
+    #procedures {
+      padding: 96px 0;
+      background: var(--bg-light);
+    }
+    .procedures-header { text-align: center; margin-bottom: 48px; }
+    .procedures-header .section-subtitle { margin: 0 auto; margin-top: 12px; }
+    .procedures-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .procedure-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 24px 16px;
+      text-align: center;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+    .procedure-card:hover {
+      border-color: var(--navy);
+      box-shadow: var(--shadow-card);
+      transform: translateY(-3px);
+    }
+    .procedure-icon { color: #5B4FDB; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; }
+    .procedure-card h4 { font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+    .procedure-more {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border: none;
+      color: white;
+    }
+    .procedure-more:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .procedure-more h4 { color: rgba(255,255,255,0.9); }
+    .procedure-more .procedure-icon { opacity: 0.9; }
+
+    /* ===== CLINICS ===== */
+    #clinics {
+      padding: 96px 0;
+      background: var(--navy-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .clinics-orb {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: var(--blue);
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.07;
+      top: -200px; right: -150px;
+    }
+    .clinics-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .clinics-content .section-title { color: white; }
+    .clinics-content .section-subtitle { color: rgba(255,255,255,0.6); }
+    .clinic-benefits { display: flex; flex-direction: column; gap: 20px; margin: 36px 0; }
+    .clinic-benefit {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .clinic-benefit-icon {
+      width: 44px; height: 44px;
+      background: rgba(91,79,219,0.12);
+      border: 1px solid rgba(91,79,219,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(147,197,253,0.9);
+      flex-shrink: 0;
+    }
+    .clinic-benefit-text strong { display: block; color: white; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .clinic-benefit-text span { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    /* Dashboard panel */
+    .clinic-dashboard {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .dashboard-header h4 { color: white; font-size: 15px; font-weight: 600; }
+    .dashboard-badge {
+      background: rgba(37,211,102,0.15);
+      color: #22c55e;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+    .dashboard-stat {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .d-stat {
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 14px 12px;
+    }
+    .d-stat .num { font-size: 22px; font-weight: 700; color: white; }
+    .d-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .dashboard-rows { display: flex; flex-direction: column; gap: 8px; }
+    .d-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+    }
+    .d-row-name { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .d-row-val { font-size: 13px; font-weight: 600; color: white; }
+    .d-row-status {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    .status-approved { background: rgba(37,211,102,0.15); color: #22c55e; }
+    .status-review { background: rgba(91,79,219,0.15); color: #7C74E8; }
+    .status-pending { background: rgba(251,191,36,0.15); color: #fbbf24; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials {
+      padding: 96px 0;
+      background: var(--white);
+    }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-header .section-subtitle { margin: 0 auto; margin-top: 12px; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-card);
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+    .stars { color: #FBBF24; font-size: 18px; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-quote {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-quote::before { content: '"'; }
+    .testimonial-quote::after { content: '"'; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .av-1 { background: linear-gradient(135deg, #1E1B4B, #5B4FDB); }
+    .av-2 { background: linear-gradient(135deg, #7C3AED, #DB2777); }
+    .av-3 { background: linear-gradient(135deg, #059669, #0EA5E9); }
+    .author-info strong { display: block; font-size: 14px; font-weight: 700; color: var(--navy); }
+    .author-info span { font-size: 13px; color: var(--text-muted); }
+    .testimonial-tag {
+      display: inline-block;
+      background: var(--bg-alt);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-top: 6px;
+    }
+
+    /* ===== FAQ ===== */
+    #faq {
+      padding: 96px 0;
+      background: var(--bg-light);
+    }
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq-left .section-subtitle { max-width: 340px; }
+    .faq-cta-box {
+      margin-top: 36px;
+      background: var(--navy);
+      border-radius: var(--radius-card);
+      padding: 28px;
+      color: white;
+    }
+    .faq-cta-box h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .faq-cta-box p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; line-height: 1.5; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy);
+      gap: 16px;
+      user-select: none;
+    }
+    .faq-question:hover { color: var(--blue); }
+    .faq-icon {
+      width: 28px; height: 28px;
+      background: var(--bg-alt);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      transition: transform 0.3s ease;
+      color: var(--navy);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--navy); color: white; }
+    .faq-answer {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding-bottom: 20px;
+    }
+
+    /* ===== CTA BANNER ===== */
+    #cta-banner {
+      padding: 96px 0;
+      background: linear-gradient(145deg, var(--navy-dark) 0%, var(--navy) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-orb-1 {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: var(--blue);
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.1;
+      top: -200px; right: -100px;
+    }
+    .cta-orb-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: #7C74E8;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.08;
+      bottom: -150px; left: -100px;
+    }
+    .cta-content { position: relative; z-index: 1; }
+    .cta-content h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .cta-content p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      padding: 96px 0;
+      background: var(--bg-light);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-hover);
+    }
+    .contact-info {
+      background: linear-gradient(150deg, var(--navy-mid) 0%, var(--navy-dark) 100%);
+      padding: 56px 48px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .contact-info .section-label { color: var(--blue-light); }
+    .contact-info h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 800;
+      line-height: 1.2;
+      color: white;
+    }
+    .contact-info p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+    .contact-channels { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .contact-channel {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+    }
+    .contact-channel-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-channel a { color: rgba(255,255,255,0.85); transition: color 0.2s; }
+    .contact-channel a:hover { color: white; }
+    .contact-form-panel {
+      background: white;
+      padding: 56px 48px;
+    }
+    .contact-form-panel h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg-light);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(91,79,219,0.12);
+      background: white;
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 15px 24px;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: var(--radius-btn);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--blue); transform: translateY(-1px); }
+    .form-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info { padding: 40px 28px; }
+      .contact-form-panel { padding: 40px 28px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #060F1E;
+      padding: 64px 0 32px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 32px;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 16px;
+      max-width: 280px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .social-icon:hover {
+      border-color: var(--blue-light);
+      background: rgba(91,79,219,0.1);
+    }
+    .footer-col h5 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: white; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-bottom a:hover { color: white; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-content { max-width: 100%; }
+      .how-inner { grid-template-columns: 1fr; gap: 48px; }
+      .how-visual { max-width: 480px; }
+      .clinics-inner { grid-template-columns: 1fr; gap: 48px; }
+      .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .procedures-grid { grid-template-columns: repeat(3, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 540px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .procedures-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .hero-trust { flex-direction: column; align-items: center; gap: 12px; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .dashboard-stat { grid-template-columns: repeat(2, 1fr); }
+      #hero { justify-content: center; padding: 80px 0 64px; }
+      #hero .container { padding: 0 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()" aria-label="Cerrar">&times;</button>
+  <a href="#benefits" onclick="closeMobile()">Pacientes</a>
+  <a href="#clinics" onclick="closeMobile()">Clínicas</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contacto</a>
+  <a href="https://conpulso.com/auth/login" target="_blank" rel="noopener" onclick="closeMobile()">Portal de clientes</a>
+  <a href="https://www.instagram.com/conpulso.pty/" target="_blank" rel="noopener" onclick="closeMobile()">@conpulso.pty</a>
+  <a href="#cta-banner" onclick="closeMobile()" class="btn btn-primary">Solicita tu plan</a>
+</div>
+
+<!-- ===== NAV ===== -->
+<header id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Pulso inicio">
+        <!-- Logo: nav variant — vivid -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 60" fill="none" height="38" width="133">
+          <defs>
+            <linearGradient id="navIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5B4FDB"/>
+              <stop offset="100%" stop-color="#1E1B4B"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="56" height="56" rx="13" fill="url(#navIconGrad)"/>
+          <path d="M10,30 H17 Q19,24 21,30 H24 L26,34 L29,9 L32,37 Q34,30 36,30 Q38,20 41,30 H50"
+            stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <text x="70" y="40"
+            style="font-family: Outfit, 'DM Sans', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 2px;"
+            fill="#FFFFFF">PULSO</text>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="#benefits">Pacientes</a>
+        <a href="#clinics">Clínicas</a>
+        <a href="#faq">FAQ</a>
+        <a href="#testimonials">Testimonios</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://www.instagram.com/conpulso.pty/" class="nav-icon-link" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://conpulso.com/auth/login" class="btn-portal" target="_blank" rel="noopener">Portal de clientes</a>
+        <a href="#cta-banner" class="btn btn-primary" style="padding: 11px 22px; font-size: 14px;">Solicita tu plan</a>
+      </div>
+      <div class="hamburger" onclick="openMobile()" aria-label="Menú" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="container">
+    <div class="hero-content fade-in">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Disponible en Panamá
+      </div>
+      <h1 class="hero-title">
+        Procedimientos<br>
+        Médicos al<br>
+        <span class="accent">Alcance de Todos</span>
+      </h1>
+      <p class="hero-subtitle">
+        Financia tu procedimiento estético en minutos. Sin banco. Sin complicaciones. 100% digital.
+      </p>
+      <div class="hero-btns">
+        <a href="#cta-banner" class="btn btn-white" style="font-size: 16px; padding: 16px 32px;">
+          Solicita tu plan →
+        </a>
+        <a href="#clinics" class="btn btn-ghost-white" style="font-size: 16px; padding: 16px 32px;">
+          Soy una clínica
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="#5B4FDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Sin afectar tu historial
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="#5B4FDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          100% digital
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="#5B4FDB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Cuotas fijas
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating cards -->
+    <div class="hero-cards" aria-hidden="true">
+      <div class="hero-card">
+        <div class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="hero-card-text">
+          <strong>Plan aprobado</strong>
+          <span>Rinoplastia · $1,200 en 12 cuotas</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="hero-card-text">
+          <strong>Aprobación en menos de 24 hrs</strong>
+          <span>Solo con documentos necesarios</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="22" height="16" x="1" y="4" rx="2"/><line x1="1" x2="23" y1="10" y2="10"/><line x1="7" x2="7.01" y1="15" y2="15"/></svg></div>
+        <div class="hero-card-text">
+          <strong>$0 de cuota de apertura</strong>
+          <span>Sin costos ocultos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-in fade-in-delay-1">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Procedimientos financiados</div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-2">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Clínicas aliadas</div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-3">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">Tasa de aprobación</div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-4">
+        <div class="stat-number">$0</div>
+        <div class="stat-label">Costo de aplicación</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BENEFITS ===== -->
+<section id="benefits">
+  <div class="container">
+    <div class="benefits-header fade-in">
+      <span class="section-label">Por qué Pulso</span>
+      <h2 class="section-title">Creado para hacerlo fácil</h2>
+      <p class="section-subtitle">Sin los obstáculos del sistema bancario tradicional. Diseñado para que el financiamiento no sea el problema.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-in fade-in-delay-1">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3>Aprobación rápida</h3>
+        <p>Recibe una respuesta en menos de 24 horas. Sin papeleo interminable ni visitas a una sucursal.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-2">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
+        <h3>Sin banco</h3>
+        <p>El proceso es 100% con Pulso. No necesitas cuenta bancaria activa ni historial crediticio extenso.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-3">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="22" x2="16" y1="11" y2="11"/></svg></div>
+        <h3>Sin fiador</h3>
+        <p>Solo necesitas tu información básica. No involucres a familiares ni a terceros en tu proceso.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-4">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="22" height="16" x="1" y="4" rx="2"/><line x1="1" x2="23" y1="10" y2="10"/><line x1="7" x2="7.01" y1="15" y2="15"/></svg></div>
+        <h3>Sin afectar tu tarjeta</h3>
+        <p>Accede a un cupo de crédito completamente independiente de tus tarjetas o límites actuales.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-5">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></div>
+        <h3>Cuotas fijas</h3>
+        <p>Sabes exactamente lo que pagas cada mes. Sin sorpresas, sin tasas variables, sin letra pequeña.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-6">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Seguro y privado</h3>
+        <p>Tu información médica y financiera siempre está protegida con cifrado de nivel bancario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how">
+  <div class="container">
+    <div class="how-inner">
+      <div>
+        <div class="fade-in">
+          <span class="section-label">Proceso</span>
+          <h2 class="section-title">Así de simple funciona</h2>
+          <p class="section-subtitle">Cuatro pasos. Todo desde tu teléfono. Sin salir de casa.</p>
+        </div>
+        <div class="how-steps" style="margin-top: 48px;">
+          <div class="how-step fade-in fade-in-delay-1">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Aplica en minutos</h3>
+              <p>Completa el formulario desde tu teléfono. Solo datos básicos — sin visitas ni papeleo.</p>
+              <span class="step-tag">⏱ 5 minutos</span>
+            </div>
+          </div>
+          <div class="how-step fade-in fade-in-delay-2">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Recibe aprobación</h3>
+              <p>Nuestro equipo revisa tu solicitud y te da una respuesta en menos de 24 horas.</p>
+              <span class="step-tag">⚡ Menos de 24h</span>
+            </div>
+          </div>
+          <div class="how-step fade-in fade-in-delay-3">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>Agenda tu cita</h3>
+              <p>Con tu plan aprobado, coordina directamente con tu clínica aliada favorita.</p>
+              <span class="step-tag">📍 30+ clínicas</span>
+            </div>
+          </div>
+          <div class="how-step fade-in fade-in-delay-4">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>Disfruta tu tratamiento</h3>
+              <p>Recibe tu procedimiento y paga en cuotas cómodas. Tú decides el plazo.</p>
+              <span class="step-tag">💆 Paga en cuotas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Phone mockup -->
+      <div class="how-visual fade-in fade-in-delay-2">
+        <div class="how-visual-orb"></div>
+        <div class="phone-mockup">
+          <div class="phone-status">
+            <span style="color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 600;">Mi solicitud</span>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div class="phone-status-dot"></div>
+              <span>En revisión</span>
+            </div>
+          </div>
+          <div class="phone-app-title">Pulso</div>
+          <div class="phone-app-sub">Solicitud #PL-4821</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-label">
+              <span>Progreso</span>
+              <span style="color: rgba(255,255,255,0.8);">75%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+          <div class="phone-fields">
+            <div class="phone-field filled">✓ Información personal</div>
+            <div class="phone-field filled">✓ Procedimiento seleccionado</div>
+            <div class="phone-field filled">✓ Clínica: Cutai Studio</div>
+            <div class="phone-field">↻ Verificando referencias...</div>
+          </div>
+          <div class="phone-submit">Ver estado de mi plan →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCEDURES ===== -->
+<section id="procedures">
+  <div class="container">
+    <div class="procedures-header fade-in">
+      <span class="section-label">Cobertura</span>
+      <h2 class="section-title">Procedimientos cubiertos</h2>
+      <p class="section-subtitle">Desde tratamientos estéticos hasta cirugías. Si es médico-estético, Pulso lo puede financiar.</p>
+    </div>
+    <div class="procedures-grid">
+      <div class="procedure-card fade-in fade-in-delay-1">
+        <div class="procedure-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4M19 17v4M3 5h4M17 19h4"/></svg></div>
+        <h4>Depilación Láser</h4>
+      </div>
+      <div class="procedure-card fade-in fade-in-delay-2">
+        <div class="procedure-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 C11 2 9.5 7 9 12 C8.5 15 7 16.5 6.5 18.5 Q6 21 12 21 Q18 21 17.5 18.5 C17 16.5 15.5 15 15 12 C14.5 7 13 2 12 2Z"/><path d="M9 19 Q10.5 18 12 19 Q13.5 18 15 19"/></svg></div>
+        <h4>Rinoplastia</h4>
+      </div>
+      <div class="procedure-card fade-in fade-in-delay-2">
+        <div class="procedure-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4-14 14H4v-4Z"/><path d="m21.5 8.5-3-3"/><path d="m16 13-3-3"/><path d="M4 22 2 20"/></svg></div>
+        <h4>Botox y Rellenos</h4>
+      </div>
+      <div class="procedure-card fade-in fade-in-delay-3">
+        <div class="procedure-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 Q12 2.5 17 4 C20 5 21 9 21 13 C21 18 17 22 12 22 C7 22 3 18 3 13 C3 9 4 5 7 4Z"/><path d="M10.5 13 Q12 14.5 13.5 13"/></svg></div>
+        <h4>Liposucción</h4>
+      </div>
+      <div class="procedure-card fade-in fade-in-delay-4">
+        <div class="procedure-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5C10 3 7 2 5.5 4S4 9 6 11c1 1 1.5 2 1.5 3.5 0 2 .5 5.5 2.5 5.5s2-4 2-4 0 4 2 4 2.5-3.5 2.5-5.5c0-1.5.5-2.5 1.5-3.5 2-2 2-5.5.5-7S14 3 12 5.5Z"/></svg></div>
+        <h4>Ortodoncia</h4>
+      </div>
+      <div class="procedure-card fade-in fade-in-delay-4">
+        <div class="procedure-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>Cirugía Ocular</h4>
+      </div>
+      <div class="procedure-card fade-in fade-in-delay-5">
+        <div class="procedure-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 Q7 10 12 10 Q17 10 21 11"/><path d="M8 10 C8.5 7.5 7.5 5.5 8 3"/><path d="M16 10 C15.5 7.5 16.5 5.5 16 3"/><line x1="8" y1="10" x2="8" y2="12"/><line x1="16" y1="10" x2="16" y2="12"/><ellipse cx="8" cy="15" rx="2.5" ry="3"/><ellipse cx="16" cy="15" rx="2.5" ry="3"/></svg></div>
+        <h4>Tratamientos Capilares</h4>
+      </div>
+      <div class="procedure-card procedure-more fade-in fade-in-delay-5">
+        <div class="procedure-icon">+</div>
+        <h4>Y muchos más...</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCUMENTOS ===== -->
+<section id="docs">
+  <div class="container">
+    <div class="procedures-header fade-in">
+      <span class="section-label">Requisitos</span>
+      <h2 class="section-title">Documentos necesarios</h2>
+      <p class="section-subtitle">Todo el proceso es digital. Solo necesitas estos documentos para solicitar tu crédito.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-in fade-in-delay-1">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="9" cy="12" r="3"/><path d="M15 9h4M15 13h4"/></svg></div>
+        <h3>Cédula por ambos lados</h3>
+        <p>Foto clara del frente y reverso de tu cédula de identidad.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-2">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3>Comprobante de ingresos</h3>
+        <p>Talonario, constancia laboral o estados bancarios. También aplica el ingreso del cónyuge.</p>
+      </div>
+      <div class="benefit-card fade-in fade-in-delay-3">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>Comprobante de residencia</h3>
+        <p>Factura reciente de servicios básicos o estado de cuenta con tu dirección actual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLINICS ===== -->
+<section id="clinics">
+  <div class="clinics-orb"></div>
+  <div class="container">
+    <div class="clinics-inner">
+      <div class="clinics-content">
+        <div class="fade-in">
+          <span class="section-label" style="color: var(--blue-light);">Para clínicas</span>
+          <h2 class="section-title">Haz crecer tu clínica con Pulso</h2>
+          <p class="section-subtitle">Ofrece financiamiento a tus pacientes sin asumir ningún riesgo. Tú cobras de inmediato, Pulso gestiona el crédito.</p>
+        </div>
+        <div class="clinic-benefits">
+          <div class="clinic-benefit fade-in fade-in-delay-1">
+            <div class="clinic-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+            <div class="clinic-benefit-text">
+              <strong>Más pacientes, más procedimientos</strong>
+              <span>El financiamiento elimina la barrera del precio. Tus pacientes dicen sí con más facilidad.</span>
+            </div>
+          </div>
+          <div class="clinic-benefit fade-in fade-in-delay-2">
+            <div class="clinic-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></div>
+            <div class="clinic-benefit-text">
+              <strong>Cobro inmediato, sin riesgo</strong>
+              <span>Pulso paga tu clínica al completarse el procedimiento. Tú nunca asumes el riesgo crediticio.</span>
+            </div>
+          </div>
+          <div class="clinic-benefit fade-in fade-in-delay-3">
+            <div class="clinic-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></div>
+            <div class="clinic-benefit-text">
+              <strong>Panel de control completo</strong>
+              <span>Gestiona todos tus financiamientos activos desde un dashboard simple e intuitivo.</span>
+            </div>
+          </div>
+        </div>
+        <a href="#cta-banner" class="btn btn-primary fade-in fade-in-delay-4" style="font-size: 16px; padding: 16px 32px;">
+          Afiliar mi clínica →
+        </a>
+      </div>
+      <!-- Dashboard panel -->
+      <div class="clinic-dashboard fade-in fade-in-delay-2">
+        <div class="dashboard-header">
+          <h4>Panel de Clínicas — Pulso</h4>
+          <span class="dashboard-badge">● En vivo</span>
+        </div>
+        <div class="dashboard-stat">
+          <div class="d-stat">
+            <div class="num">$14,200</div>
+            <div class="lbl">Este mes</div>
+          </div>
+          <div class="d-stat">
+            <div class="num">38</div>
+            <div class="lbl">Planes activos</div>
+          </div>
+          <div class="d-stat">
+            <div class="num">97%</div>
+            <div class="lbl">Cobro en tiempo</div>
+          </div>
+        </div>
+        <div class="dashboard-rows">
+          <div class="d-row" style="background: rgba(255,255,255,0.06); margin-bottom: 4px;">
+            <span class="d-row-name" style="color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Paciente</span>
+            <span class="d-row-name" style="color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Monto</span>
+            <span class="d-row-name" style="color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Estado</span>
+          </div>
+          <div class="d-row">
+            <span class="d-row-name">Valeria M.</span>
+            <span class="d-row-val">$850</span>
+            <span class="d-row-status status-approved">Aprobado</span>
+          </div>
+          <div class="d-row">
+            <span class="d-row-name">Carmen R.</span>
+            <span class="d-row-val">$1,200</span>
+            <span class="d-row-status status-review">En revisión</span>
+          </div>
+          <div class="d-row">
+            <span class="d-row-name">Sofía T.</span>
+            <span class="d-row-val">$500</span>
+            <span class="d-row-status status-approved">Aprobado</span>
+          </div>
+          <div class="d-row">
+            <span class="d-row-name">Andrea L.</span>
+            <span class="d-row-val">$2,100</span>
+            <span class="d-row-status status-pending">Pendiente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header fade-in">
+      <span class="section-label">Testimonios</span>
+      <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+      <p class="section-subtitle">Personas reales que usaron Pulso para acceder a los procedimientos que siempre quisieron.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in fade-in-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">Siempre quise hacerme el láser pero nunca tenía el dinero completo. Con Pulso lo pagué en cuotas cómodas y el proceso fue súper rápido. En menos de un día ya tenía todo aprobado.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av-1">V</div>
+          <div class="author-info">
+            <strong>Valeria Moreno</strong>
+            <span>Ciudad de Panamá</span>
+            <div class="testimonial-tag">Depilación Láser</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in fade-in-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">Pensé que sin banco era imposible. Pulso me aprobó el plan para mi rinoplastia en pocas horas. Sin fiador, sin complicaciones. Ojalá existiera para todo.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av-2">C</div>
+          <div class="author-info">
+            <strong>Carolina Rivas</strong>
+            <span>Panamá</span>
+            <div class="testimonial-tag">Rinoplastia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in fade-in-delay-3">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">Como clínica, afiliarme a Pulso fue la mejor decisión. Nuestros pacientes cierran con mucho más facilidad y nosotros cobramos inmediatamente. No hay riesgo para nosotros.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av-3">D</div>
+          <div class="author-info">
+            <strong>Dr. Sebastián Torres</strong>
+            <span>Director médico · Clínica Estética Panamá</span>
+            <div class="testimonial-tag">Clínica aliada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div>
+        <div class="fade-in">
+          <span class="section-label">Preguntas frecuentes</span>
+          <h2 class="section-title">Todo lo que necesitas saber</h2>
+          <p class="section-subtitle">¿Tienes dudas? Aquí resolvemos las más comunes. Si no encuentras tu respuesta, escríbenos.</p>
+        </div>
+        <div class="faq-cta-box fade-in fade-in-delay-2">
+          <h4>¿Aún tienes dudas?</h4>
+          <p>Nuestro equipo está disponible para ayudarte en minutos por WhatsApp.</p>
+          <a href="https://wa.me/50765619498" class="btn btn-wa" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.849L.057 23.454a.5.5 0 0 0 .612.612l5.605-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.661-.526-5.162-1.438l-.37-.22-3.828 1.007 1.007-3.828-.22-.37A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+            Chatear por WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="faq-list fade-in fade-in-delay-1">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            ¿Cuáles son los requisitos para aplicar?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            Solo necesitas ser panameño o residente, tener cédula o pasaporte vigente, y un número de teléfono. No necesitas cuenta bancaria, fiador ni historial crediticio extenso para aplicar.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            ¿Cuánto tarda la aprobación?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            La mayoría de las solicitudes reciben una respuesta en menos de 24 horas hábiles. En muchos casos, la aprobación llega en pocas horas después de completar el formulario.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            ¿Cuánto puedo financiar?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            Puedes financiar desde $200 hasta $5,000 dependiendo de tu perfil. El monto exacto se confirma durante el proceso de aprobación. Los plazos van de 3 a 24 meses con cuotas fijas.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            ¿Qué clínicas aceptan Pulso?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            Contamos con las mejores clínicas en Panamá. Al recibir tu aprobación, te enviamos el directorio completo para que elijas la que prefieras. Si tu clínica no está en la lista, puedes solicitarnos que la afiliemos.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section id="cta-banner">
+  <div class="cta-orb-1"></div>
+  <div class="cta-orb-2"></div>
+  <div class="container">
+    <div class="cta-content fade-in">
+      <h2>¿Listo para tu tratamiento?</h2>
+      <p>Aplica en minutos y recibe tu plan de financiamiento hoy. Sin banco. Sin complicaciones.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-white" style="font-size: 16px; padding: 16px 36px;">
+          Solicita tu plan →
+        </a>
+        <a href="https://wa.me/50765619498" class="btn btn-wa" target="_blank" rel="noopener" style="font-size: 16px; padding: 16px 36px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.849L.057 23.454a.5.5 0 0 0 .612.612l5.605-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.661-.526-5.162-1.438l-.37-.22-3.828 1.007 1.007-3.828-.22-.37A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Hablar con un asesor
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: info panel -->
+      <div class="contact-info">
+        <div>
+          <span class="section-label">Contáctanos</span>
+          <h2>¿Tienes alguna pregunta?</h2>
+        </div>
+        <p>Déjanos tus datos y un representante de Pulso se pondrá en contacto contigo lo antes posible.</p>
+
+        <div class="contact-channels">
+          <div class="contact-channel">
+            <div class="contact-channel-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.849L.057 23.454a.5.5 0 0 0 .612.612l5.605-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.661-.526-5.162-1.438l-.37-.22-3.828 1.007 1.007-3.828-.22-.37A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:12px;opacity:0.5;margin-bottom:2px;">WhatsApp</div>
+              <a href="https://wa.me/50765619498" target="_blank" rel="noopener">+507 6561-9498</a>
+            </div>
+          </div>
+
+          <div class="contact-channel">
+            <div class="contact-channel-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.9)" stroke="none"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:12px;opacity:0.5;margin-bottom:2px;">Instagram</div>
+              <a href="https://www.instagram.com/conpulso.pty/" target="_blank" rel="noopener">@conpulso.pty</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="contact-form-panel">
+        <h3>Envíanos un mensaje</h3>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm" onsubmit="handleContact(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Nombre completo *</label>
+              <input type="text" id="c-name" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="c-phone">Teléfono</label>
+              <input type="tel" id="c-phone" name="telefono" placeholder="+507 6000-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-email">Correo electrónico *</label>
+            <input type="email" id="c-email" name="email" placeholder="tu@correo.com" required />
+          </div>
+          <div class="form-group">
+            <label for="c-type">Tipo de consulta *</label>
+            <select id="c-type" name="tipo" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="paciente">Soy paciente y quiero financiar un procedimiento</option>
+              <option value="clinica">Represento una clínica y quiero afiliarme</option>
+              <option value="otro">Otra consulta</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="c-msg">Mensaje *</label>
+            <textarea id="c-msg" name="mensaje" placeholder="Cuéntanos en qué podemos ayudarte..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Enviar mensaje →</button>
+          <p class="form-note">Te respondemos en menos de 24 horas.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <!-- Logo: footer variant — vivid -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 60" fill="none" height="34" width="119" aria-label="Pulso">
+          <defs>
+            <linearGradient id="footerIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5B4FDB"/>
+              <stop offset="100%" stop-color="#1E1B4B"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="56" height="56" rx="13" fill="url(#footerIconGrad)"/>
+          <path d="M10,30 H17 Q19,24 21,30 H24 L26,34 L29,9 L32,37 Q34,30 36,30 Q38,20 41,30 H50"
+            stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <text x="70" y="40"
+            style="font-family: Outfit, 'DM Sans', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 2px;"
+            fill="#FFFFFF">PULSO</text>
+        </svg>
+        <p>Financia tu procedimiento estético en minutos. Sin banco. Sin complicaciones. 100% digital. Panamá.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/conpulso.pty/" class="social-icon" aria-label="Instagram" title="@conpulso.pty" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/50765619498" class="social-icon" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.849L.057 23.454a.5.5 0 0 0 .612.612l5.605-1.475A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.892 0-3.661-.526-5.162-1.438l-.37-.22-3.828 1.007 1.007-3.828-.22-.37A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Pacientes</h5>
+        <ul>
+          <li><a href="#benefits">Cómo funciona</a></li>
+          <li><a href="#procedures">Procedimientos</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#cta-banner">Solicitar plan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Clínicas</h5>
+        <ul>
+          <li><a href="#clinics">Afiliar clínica</a></li>
+          <li><a href="#clinics">Beneficios</a></li>
+          <li><a href="#cta-banner">Panel de control</a></li>
+          <li><a href="https://wa.me/50765619498" target="_blank" rel="noopener">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Aviso Legal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Pulso · Panamá · Todos los derechos reservados</span>
+      <div style="display: flex; gap: 16px;">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Mobile menu
+  function openMobile() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Open clicked if it wasn't open
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Contact form handler
+  function handleContact(e) {
+    e.preventDefault();
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    // Redirect to WhatsApp with form data as fallback
+    const name = document.getElementById('c-name').value;
+    const email = document.getElementById('c-email').value;
+    const type = document.getElementById('c-type').value;
+    const msg = document.getElementById('c-msg').value;
+    const text = encodeURIComponent(`Hola Pulso! Mi nombre es ${name} (${email}).\nConsulta: ${type}\n${msg}`);
+    setTimeout(() => {
+      window.open(`https://wa.me/50765619498?text=${text}`, '_blank');
+      btn.textContent = 'Mensaje enviado ✓';
+      btn.style.background = 'var(--success)';
+      document.getElementById('contactForm').reset();
+    }, 600);
+  }
+
+  // Scroll fade-in via Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Keyboard support for hamburger
+  document.querySelector('.hamburger').addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') openMobile();
+  });
+</script>
+
+</body>
+</html>
