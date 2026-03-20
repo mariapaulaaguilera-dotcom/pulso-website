@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 320" fill="none">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap');</style>
+  </defs>
+  <rect width="700" height="320" fill="#F7F9FC"/>
+
+  <!-- Title -->
+  <text x="32" y="28"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 10px; fill: #4A5568; letter-spacing: 1.5px;">TYPOGRAPHY</text>
+  <line x1="32" y1="38" x2="668" y2="38" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Inter 800 — Logo wordmark -->
+  <text x="32" y="82"
+    style="font-family: Inter, 'DM Sans', sans-serif; font-weight: 800; font-size: 40px; fill: #1B3A6B; letter-spacing: -0.8px;">Pulso</text>
+  <text x="32" y="100"
+    style="font-family: Inter, sans-serif; font-size: 11px; fill: #718096;">Inter 800 · Wordmark · letter-spacing -0.8px</text>
+  <line x1="32" y1="112" x2="668" y2="112" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Inter 800 — Headlines -->
+  <text x="32" y="150"
+    style="font-family: Inter, sans-serif; font-weight: 800; font-size: 32px; fill: #0A1628; letter-spacing: -1px;">Procedimientos Médicos</text>
+  <text x="32" y="168"
+    style="font-family: Inter, sans-serif; font-size: 11px; fill: #718096;">Inter 800 · 32px · Headlines · letter-spacing -1px</text>
+  <line x1="32" y1="180" x2="668" y2="180" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Inter 700 — Section headings -->
+  <text x="32" y="216"
+    style="font-family: Inter, sans-serif; font-weight: 700; font-size: 22px; fill: #1B3A6B;">Aprobación rápida y sin trámites</text>
+  <text x="32" y="234"
+    style="font-family: Inter, sans-serif; font-size: 11px; fill: #718096;">Inter 700 · 22px · Card titles / Section headings</text>
+  <line x1="32" y1="246" x2="668" y2="246" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Inter 600 — Buttons / Labels -->
+  <text x="32" y="276"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 16px; fill: #4A9EFF;">Solicita tu plan →</text>
+  <text x="32" y="296"
+    style="font-family: Inter, sans-serif; font-size: 11px; fill: #718096;">Inter 600 · 16px · Buttons / Labels / Body</text>
+</svg>

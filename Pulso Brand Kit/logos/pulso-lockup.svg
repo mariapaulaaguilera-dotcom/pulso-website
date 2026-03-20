@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" fill="none">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&amp;family=Inter:wght@400;300&amp;display=swap');
+    </style>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B4FDB"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background plate -->
+  <rect width="200" height="280" rx="28" fill="url(#bgGrad)"/>
+
+  <!-- Icon box: 90×90 centered -->
+  <rect x="55" y="28" width="90" height="90" rx="18" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- EKG: proper PQRST inside icon box -->
+  <path d="M64,73 H73 Q76,66 79,73 H83 L86,78 L95,40 L104,81 Q109,73 114,73 Q119,63 125,73 H136"
+    stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Divider line: subtle separator -->
+  <line x1="55" y1="144" x2="145" y2="144" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- PULSO wordmark -->
+  <text x="100" y="185"
+    style="font-family: Outfit, 'DM Sans', sans-serif; font-weight: 800; font-size: 42px; fill: #FFFFFF; letter-spacing: 4px; text-anchor: middle;">PULSO</text>
+
+  <!-- Slogan -->
+  <text x="100" y="218"
+    style="font-family: Inter, sans-serif; font-weight: 300; font-size: 13.5px; fill: rgba(255,255,255,0.7); letter-spacing: 0.8px; text-anchor: middle;">Financia tu Procedimiento</text>
+</svg>

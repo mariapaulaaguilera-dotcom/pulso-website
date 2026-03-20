@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 160" fill="none">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap');</style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="660" height="160" fill="#F7F9FC"/>
+
+  <!-- Title -->
+  <text x="20" y="22"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 10px; fill: #4A5568; letter-spacing: 1.5px;">COLOR PALETTE</text>
+  <line x1="20" y1="30" x2="640" y2="30" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Swatch 1: #5B4FDB -->
+  <rect x="20" y="44" width="108" height="72" rx="8" fill="#5B4FDB"/>
+  <text x="74" y="138"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 11px; fill: #1E1B4B; text-anchor: middle;">#5B4FDB</text>
+  <text x="74" y="152"
+    style="font-family: Inter, sans-serif; font-size: 10px; fill: #718096; text-anchor: middle;">Indigo · Primario</text>
+
+  <!-- Swatch 2: #1E1B4B -->
+  <rect x="148" y="44" width="108" height="72" rx="8" fill="#1E1B4B"/>
+  <text x="202" y="138"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 11px; fill: #1E1B4B; text-anchor: middle;">#1E1B4B</text>
+  <text x="202" y="152"
+    style="font-family: Inter, sans-serif; font-size: 10px; fill: #718096; text-anchor: middle;">Navy Indigo · Oscuro</text>
+
+  <!-- Swatch 3: #7C74E8 -->
+  <rect x="276" y="44" width="108" height="72" rx="8" fill="#7C74E8"/>
+  <text x="330" y="138"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 11px; fill: #1E1B4B; text-anchor: middle;">#7C74E8</text>
+  <text x="330" y="152"
+    style="font-family: Inter, sans-serif; font-size: 10px; fill: #718096; text-anchor: middle;">Indigo · Acento</text>
+
+  <!-- Swatch 4: #F7F9FC -->
+  <rect x="404" y="44" width="108" height="72" rx="8" fill="#F7F9FC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="458" y="138"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 11px; fill: #1E1B4B; text-anchor: middle;">#F7F9FC</text>
+  <text x="458" y="152"
+    style="font-family: Inter, sans-serif; font-size: 10px; fill: #718096; text-anchor: middle;">Claro · Fondos</text>
+
+  <!-- Swatch 5: #FFFFFF -->
+  <rect x="532" y="44" width="108" height="72" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="586" y="138"
+    style="font-family: Inter, sans-serif; font-weight: 600; font-size: 11px; fill: #1E1B4B; text-anchor: middle;">#FFFFFF</text>
+  <text x="586" y="152"
+    style="font-family: Inter, sans-serif; font-size: 10px; fill: #718096; text-anchor: middle;">Blanco</text>
+</svg>

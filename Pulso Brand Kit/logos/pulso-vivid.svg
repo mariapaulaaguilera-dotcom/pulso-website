@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" fill="none">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&amp;family=Inter:wght@300;400&amp;display=swap');
+    </style>
+    <linearGradient id="bgGrad" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#5B4FDB"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background plate -->
+  <rect width="240" height="320" rx="26" fill="url(#bgGrad)"/>
+
+  <!-- Icon box: 92×92, centered -->
+  <rect x="74" y="28" width="92" height="92" rx="18"
+    fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- EKG: proper PQRST — dramatic R spike, smooth curves -->
+  <!-- Box center: x=120, y=74 | Baseline: y=74 -->
+  <path d="M83,74 H92 Q95,66 98,74 H102 L105,80 L114,36 L123,84 Q128,74 135,74 Q141,58 148,74 H157"
+    stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Thin accent line under icon -->
+  <line x1="100" y1="148" x2="140" y2="148" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- PULSO wordmark -->
+  <text x="120" y="196"
+    style="font-family: Outfit, 'DM Sans', sans-serif; font-weight: 800; font-size: 44px; fill: #FFFFFF; letter-spacing: 5px; text-anchor: middle;">PULSO</text>
+
+  <!-- Slogan line 1 -->
+  <text x="120" y="228"
+    style="font-family: Inter, sans-serif; font-weight: 300; font-size: 13px; fill: rgba(255,255,255,0.68); letter-spacing: 0.6px; text-anchor: middle;">Procedimientos médicos,</text>
+
+  <!-- Slogan line 2 -->
+  <text x="120" y="248"
+    style="font-family: Inter, sans-serif; font-weight: 300; font-size: 13px; fill: rgba(255,255,255,0.68); letter-spacing: 0.6px; text-anchor: middle;">al alcance de todos</text>
+</svg>

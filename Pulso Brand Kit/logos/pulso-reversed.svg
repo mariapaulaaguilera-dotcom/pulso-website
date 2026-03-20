@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 76" fill="none">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&amp;display=swap');</style>
+  </defs>
+
+  <!-- Navy background plate -->
+  <rect width="230" height="76" rx="12" fill="#1B3A6B"/>
+
+  <!-- Icon: white-on-navy, centered vertically -->
+  <rect x="10" y="10" width="56" height="56" rx="13" fill="rgba(255,255,255,0.12)"/>
+  <rect x="10" y="10" width="56" height="56" rx="13" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <!-- EKG: offset +8 on x and y to align with icon position -->
+  <path d="M18,38 H25 Q27,32 29,38 H32 L34,42 L37,17 L40,45 Q42,38 44,38 Q46,28 49,38 H58"
+    stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Wordmark: Inter 800, white -->
+  <text x="80" y="48"
+    style="font-family: Outfit, 'DM Sans', sans-serif; font-weight: 800; font-size: 26px; fill: #FFFFFF; letter-spacing: 2px;">PULSO</text>
+</svg>
